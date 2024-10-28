@@ -41,6 +41,6 @@ export class GildedRose {
       }
     });
 
-    return updatedItems;
+    return this.items = updatedItems;
   }
 }
