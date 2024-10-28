@@ -10,7 +10,9 @@ function changeItemBy({ item, amount, date }: { item: Item, amount: number, date
 };
 
 export const updateAgedItems = (item: Item): Item => {
-  return changeItemBy({ item, amount: 1, date: true });
+  return isItemExpired(item.sellIn)
+    ? changeItemBy({ item, amount: 2, date: true })
+    : changeItemBy({ item, amount: 1, date: true });
 };
 
 export const updateConcertItems = (item: Item): Item => {
