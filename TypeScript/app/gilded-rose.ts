@@ -1,4 +1,10 @@
-import { updateNormalItems, updateAgedItems, updateConcertItems, updateLegendaryItems } from './item-update-handlers';
+import {
+  updateAgedItems,
+  updateConcertItems,
+  updateConjuredItems,
+  updateLegendaryItems,
+  updateNormalItems,
+} from "./item-update-handlers";
 
 export class Item {
   name: string;
@@ -22,16 +28,18 @@ export class GildedRose {
   updateQuality() {
     const updatedItems = this.items.map((item: Item) => {
       switch (item.name) {
-        case 'Sulfuras, Hand of Ragnaros':
+        case "Sulfuras, Hand of Ragnaros":
           return updateLegendaryItems(item);
-        case 'Backstage passes to a TAFKAL80ETC concert':
+        case "Backstage passes to a TAFKAL80ETC concert":
           return updateConcertItems(item);
-        case 'Aged Brie':
+        case "Aged Brie":
           return updateAgedItems(item);
+        case "Conjured Mana Cake":
+          return updateConjuredItems(item);
         default:
           return updateNormalItems(item);
       }
-    })
+    });
 
     return updatedItems;
   }

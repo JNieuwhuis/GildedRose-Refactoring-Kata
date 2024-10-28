@@ -21,6 +21,12 @@ export const updateConcertItems = (item: Item): Item => {
     : changeItemBy({ item, amount, date: true });
 };
 
+export const updateConjuredItems = (item: Item): Item => {
+  return isItemExpired(item.sellIn)
+    ? changeItemBy({ item, amount: -4, date: true })
+    : changeItemBy({ item, amount: -2, date: true });
+};
+
 export const updateLegendaryItems = (item: Item): Item => {
   // NOTE: 
   // Gave this item category it's own handler, even though it now only returns the item as-is
@@ -34,5 +40,5 @@ export const updateLegendaryItems = (item: Item): Item => {
 export const updateNormalItems = (item: Item): Item => {
   return isItemExpired(item.sellIn)
     ? changeItemBy({ item, amount: -2, date: true })
-    : changeItemBy({ item, amount: -1, date: true })
+    : changeItemBy({ item, amount: -1, date: true });
 };
