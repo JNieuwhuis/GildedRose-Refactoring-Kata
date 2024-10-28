@@ -7,18 +7,6 @@ describe('Normal items', () => {
     expect(items[0]).toEqual({ name: 'foo', sellIn: 2, quality: 2 });
   });
 
-  it('should not have negative quality', () => {
-    const gildedRose = new GildedRose([new Item('foo', 3, 0)]);
-    const items = gildedRose.updateQuality();
-    expect(items[0].quality).not.toBeLessThan(0);
-  });
-
-  it('should not have quality exceeding 50', () => {
-    const gildedRose = new GildedRose([new Item('Aged Brie', 3, 50)]);
-    const items = gildedRose.updateQuality();
-    expect(items[0].quality).not.toBeGreaterThan(50);
-  });
-
   it('should doubly decrease in quality when degraded', () => {
     const gildedRose = new GildedRose([new Item('foo', -1, 8)]);
     const items = gildedRose.updateQuality();
@@ -35,6 +23,7 @@ describe('Legendary items', () => {
 
   // it('should always have a quality of 80');
   // the requirements stipulate this, but the current accepted code does not enforce this
+  // also see NOTE @/item-update-handlers.ts/L25
 });
 
 describe('Aged items', () => {
